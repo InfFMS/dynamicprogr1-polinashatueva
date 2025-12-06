@@ -16,3 +16,12 @@ GRID = [
 ]
 
 # Решение будет здесь
+A = [[10,20,30,40], [5,1,2,10], [4,2,1,5], [1,20,30,2]]
+for j in range(1, 4):
+    A[0][j] += A[0][j-1]
+for i in range(1, 4):
+    A[i][0] += A[i-1][0]
+for i in range(1, 4):
+    for j in range(1, 4):
+        A[i][j] += min(A[i][j-1], A[i-1][j])
+print(A[i][j])
