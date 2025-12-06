@@ -14,3 +14,21 @@
 PRICE = [0, 1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 1, 3, 1, 2, 1] 
 
 # Решение будет здесь
+N = int(input())
+F = [0] * 1000
+def trek (N):
+    if N==0:
+        return 0
+    elif F[N] != 0:
+        return F[N]
+    else:
+        mincost = 1000000000
+        if N>=1:
+            mincost = min(mincost,trek(N-1)+PRICE[N])
+        if N >=2:
+            mincost = min(mincost,trek(N-2)+PRICE[N])
+        if N>=4:
+            mincost = min(mincost,trek(N-4)+ PRICE[N])
+        F[N] = mincost
+        return F[N]
+print(trek(N))

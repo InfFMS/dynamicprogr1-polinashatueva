@@ -9,3 +9,21 @@
 """
 
 # Решение будет здесь
+N = int(input())
+F = [0] * 1000
+def trek (N):
+    if N == 1:
+        return 1
+    elif N == 2:
+        return 2
+    elif N == 3:
+        return 3
+    elif N == 4:
+        return 6
+    elif F[N] != 0:
+        return F[N]
+    else:
+        F[N] = trek(N-1) + trek(N-2)+ trek(N-4)
+    return F[N]
+
+print(trek(N))
